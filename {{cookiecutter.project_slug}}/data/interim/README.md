@@ -1,7 +1,8 @@
 # data/interim/
 
-脚本产生的中间结果：比对后的 bam、去重后的 count matrix、QC 报告、临时对象等。
+Intermediate results produced by scripts: aligned BAMs, deduplicated count matrices,
+QC reports, temporary objects.
 
-本目录内容**应当可以随时删掉并由脚本完全重建**。如果某个文件删掉后就再也做不出来了，
-说明它要么该进 `raw/`（是原始数据），要么该进 `processed/`（是最终产物），
-要么缺了生成它的脚本。
+Everything here **must be deletable and fully reconstructible by scripts**. If deleting
+a file here would make it unrecoverable, it belongs either in `raw/` (it is primary data)
+or in `processed/` (it is a final product) — or the script that generates it is missing.

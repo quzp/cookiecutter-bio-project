@@ -1,14 +1,16 @@
 # manuscript/main/
 
-正文。推荐 Quarto（`.qmd`）或纯 Markdown + Pandoc：文本进 git 可 diff，
-引文用 `.bib`，图表交叉引用自动编号，一份源文件可导出 docx / pdf / html。
+Manuscript text. Quarto (`.qmd`) or plain Markdown with Pandoc is recommended: the text
+is diffable in git, citations come from a `.bib` file, figure and table cross-references
+are numbered automatically, and one source renders to docx, PDF and HTML.
 
-建议文件：
+Suggested files:
 
 ```
-manuscript.qmd      正文
-references.bib      引文库（从 Zotero 导出）
+manuscript.qmd      main text
+references.bib      bibliography, exported from Zotero
 ```
 
-若合作者坚持用 Word 修订模式，把 docx 也放本目录，文件名带日期与作者缩写，
-例如 `manuscript_20260601_zp.docx`，不要覆盖旧版。
+If collaborators insist on Word track-changes, keep the docx here too, with the date and
+author initials in the filename (`manuscript_20260601_zq.docx`). Never overwrite an
+earlier version.

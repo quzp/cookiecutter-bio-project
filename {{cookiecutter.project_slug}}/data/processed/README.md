@@ -1,12 +1,14 @@
 # data/processed/
 
-可以直接喂给统计分析的最终数据集，例如：
+Analysis-ready datasets, for example:
 
-- 过滤、归一化后的表达矩阵
-- 注释好的 `SummarizedExperiment` / `AnnData` 对象
-- 合并了 `metadata/samples.tsv` 分组信息的分析用表
+- Filtered and normalised expression matrices
+- Annotated `SummarizedExperiment` / `AnnData` objects
+- Tables already joined with grouping information from `data/metadata/samples.tsv`
 
-约定：
+Conventions:
 
-- 文件名带日期或版本，例如 `counts_filtered_20260401.rds`，便于追溯手稿里的图用的是哪版。
-- 每个文件对应一个生成脚本，脚本路径写在同名的 `.md` 说明里或文件头注释中。
+- Include a date or version in the filename, e.g. `counts_filtered_20260401.rds`, so a
+  figure in the manuscript can be traced to the exact dataset behind it.
+- Every file has a generating script; record its path in the file header or in a
+  matching `.md` note.

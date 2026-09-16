@@ -1,5 +1,7 @@
 # src/utils/
 
-跨脚本复用的工具函数：路径解析、配置读取、绘图主题、常用的数据整理函数。
+Helpers shared across scripts: path resolution, config loading, plotting theme, common
+data-wrangling functions.
 
-本目录已提供路径与配置读取的最小实现，其他脚本直接 source / import 即可。
+Minimal implementations of path and config handling are provided here — source or import
+them rather than reinventing per script.

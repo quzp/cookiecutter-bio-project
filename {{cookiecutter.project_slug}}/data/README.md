@@ -1,20 +1,23 @@
 # data/
 
-机器产出的数据。**默认全部不进 git**（见根目录 `.gitignore`，只有各级 README 被保留）。
+Machine-generated data. **Excluded from git by default** (see `.gitignore`) with two
+exceptions: the README files, and all of `data/metadata/`.
 
-数据流向是单向的，越往下越接近可分析状态：
+Data flows in one direction, becoming more analysis-ready at each step:
 
 ```
-raw/ ──┐
-       ├──► interim/ ──► processed/ ──► src/analysis/
+raw/ ──────┐
+           ├──► interim/ ──► processed/ ──► src/analysis/
 external/ ─┘
 ```
 
-| 子目录 | 可写？ | 说明 |
+| Subdirectory | Writable? | Contents |
 | --- | --- | --- |
-| `raw/` | ❌ 只读 | 仪器原始输出。建议 `chmod -R a-w data/raw` |
-| `external/` | ❌ 只读 | 公共数据库下载、他人提供的数据 |
-| `interim/` | ✅ | 脚本产生的中间结果，可以随时删掉重跑 |
-| `processed/` | ✅ | 可直接喂给统计分析的最终数据集 |
+| `metadata/` | yes, tracked in git | Sample sheet; the joint between bench and computation |
+| `raw/` | **no** | Instrument output. Run `chmod -R a-w data/raw` |
+| `external/` | **no** | Public datasets, references, collaborator data |
+| `interim/` | yes | Intermediate results; deletable and regenerable at any time |
+| `processed/` | yes | Analysis-ready datasets |
 
-**备份**：这些文件不在 git 里，需要独立的备份策略。把备份位置写进根目录 README。
+**Backup:** these files are not in git and need an independent backup policy.
+Record where the backup lives in the top-level README.

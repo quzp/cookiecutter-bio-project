@@ -1,22 +1,25 @@
 # experiments/
 
-一次具体实验的完整记录。每个实验建一个目录：
+A complete record of one experiment. One directory per experiment:
 
 ```
 experiments/
 ├── 20260301_organoid_d30_qc/
-│   ├── record.md              <- 照 TEMPLATE_experiment.md 填
-│   ├── plate_layout.tsv       <- 板图、加样表等小表格
-│   └── notes/                 <- 临时观察、拍照说明（图像本身放 data/raw/）
+│   ├── record.md              <- filled in from TEMPLATE_experiment.md
+│   ├── plate_layout.tsv       <- plate maps, loading tables, small tabular data
+│   └── notes/                 <- observations (images themselves go to data/raw/)
 └── 20260315_crispri_transduction/
 ```
 
-命名规则：`YYYYMMDD_简短英文描述`，日期用实验**开始**那天。
+Naming: `YYYYMMDD_short_description`, dated by the day the experiment **started**.
 
-约定：
+Conventions:
 
-- **记录当天写。** 事后补记的内容注明"补记于 YYYY-MM-DD"。
-- **记录不改历史。** 发现之前写错了，在文末追加勘误，不要就地改写。
-- **与数据挂钩。** 记录里写清产生了哪些样本，样本 ID 要和 `metadata/samples.tsv`
-  里的 `sample_id` 完全一致；产生的原始文件写明在 `data/raw/` 下的路径。
-- **失败的实验也要留。** 在标题里标 `[FAILED]`，写清失败原因，这比成功记录更值钱。
+- **Write the record the same day.** Anything added later is marked
+  "added retrospectively on YYYY-MM-DD".
+- **Never rewrite history.** If you find an error in an earlier record, append a
+  correction at the end rather than editing the original text.
+- **Link to the data.** List every sample produced, using `sample_id` values that match
+  `data/metadata/samples.tsv` exactly, and give the path under `data/raw/` for the files.
+- **Keep failed experiments.** Mark the title `[FAILED]` and write down why. These
+  records are worth more than the successful ones.

@@ -1,0 +1,38 @@
+---
+title: "02 Exploratory analysis (Python)"
+author: "{{ cookiecutter.author_name }}"
+date: today
+format:
+  html:
+    toc: true
+    code-fold: show
+    embed-resources: true
+jupyter: python3
+---
+
+## Setup
+
+```{python}
+import sys
+from pathlib import Path
+
+# Walk up to the project root (the directory containing pixi.toml)
+root = next(p for p in Path.cwd().resolve().parents if (p / "pixi.toml").exists())
+sys.path.insert(0, str(root))
+
+from src.utils.paths import load_samples
+
+samples = load_samples()
+samples.head()
+```
+
+## Analysis
+
+<!-- Explore here. Move settled code into a script under src/. -->
+
+## Session info
+
+```{python}
+import sys
+print(sys.version)
+```

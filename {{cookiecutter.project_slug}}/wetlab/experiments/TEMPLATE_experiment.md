@@ -1,49 +1,50 @@
-# YYYYMMDD 实验简称
+# YYYYMMDD Experiment short name
 
-- **日期**：YYYY-MM-DD（结束日期：）
-- **操作人**：
-- **目的**：一两句话，说明这次实验要回答什么问题
-- **使用协议**：`protocols/xxx.md` v1.0（如有偏离，在下面"偏离"里写清）
+- **Date:** YYYY-MM-DD (completed: )
+- **Performed by:**
+- **Purpose:** one or two sentences — what question this experiment answers
+- **Protocol used:** `protocols/xxx.md` v1.0 (record any deviation below)
 
-## 实验设计
+## Design
 
-| 组别 | 处理 | 生物学重复 | 样本 ID |
+| Group | Treatment | Biological replicates | Sample IDs |
 | --- | --- | --- | --- |
 | Ctrl |  | 3 | `S001`, `S002`, `S003` |
 | Treat |  | 3 | `S004`, `S005`, `S006` |
 
-> 样本 ID 必须同步登记到 `metadata/samples.tsv`。
+> These sample IDs must also be registered in `data/metadata/samples.tsv`.
 
-## 材料批次
+## Material lots
 
-| 物料 | 来源/库存编号 | 批号 | 备注 |
+| Item | Source / inventory ID | Lot no. | Notes |
 | --- | --- | --- | --- |
 |  |  |  |  |
 
-## 执行过程
+## Execution
 
-<!-- 按时间顺序记录实际做了什么，包含时间点、温度、转速等实际参数 -->
+<!-- What actually happened, in order, with real timings, temperatures and speeds -->
 
 -
 
-## 与协议的偏离
+## Deviations from protocol
 
-<!-- 任何和 SOP 不一致的地方，以及为什么。没有就写"无"。 -->
+<!-- Anything that differed from the SOP and why. Write "none" if there were none. -->
 
-## 产出数据
+## Data produced
 
-| 类型 | 路径 | 说明 |
+| Type | Path | Notes |
 | --- | --- | --- |
-| 例：荧光图像 | `data/raw/imaging/20260301_d30/` | 20x，DAPI/GFP 双通道 |
+| e.g. fluorescence images | `data/raw/imaging/20260301_d30/` | 20x, DAPI/GFP |
 
-## 观察与初步结论
+## Observations and preliminary conclusions
 
 -
 
-## 问题与后续
+## Open questions and follow-up
 
 - [ ]
 
-## 勘误
+## Corrections
 
-<!-- 事后发现的记录错误在此追加，注明发现日期。不要修改上面的原始记录。 -->
+<!-- Errors discovered later are appended here with the date they were found.
+     Do not edit the original record above. -->

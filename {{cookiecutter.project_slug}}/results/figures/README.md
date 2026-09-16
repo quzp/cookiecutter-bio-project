@@ -1,12 +1,14 @@
 # results/figures/
 
-由 `src/visualization/` 下的脚本直接输出的图。特点：
+Figures written directly by scripts in `src/visualization/`:
 
-- **可重跑**：换个参数重新执行脚本就能全部重画，因此不进 git。
-- **未排版**：单张图，不做拼版、不加字母标号。
-- **给自己看**：用于自查、组会讨论。
+- **Regenerable** — rerunning the script redraws everything, so these are not in git.
+- **Unassembled** — single panels, no multi-panel layout, no letter labels.
+- **For you** — self-review and lab meetings.
 
-进入手稿的图，经人工拼版/标注后另存到 `manuscript/figures/`，那里的文件才进 git。
+Figures headed for the manuscript are assembled and annotated by hand and saved to
+`manuscript/figures/`, which *is* tracked in git.
 
-建议文件名带生成脚本编号：`10_deseq2_volcano.pdf` 对应 `src/analysis/10_deseq2.R`。
-矢量格式（pdf/svg）优先，位图至少 300 dpi。
+Name files after the script that produced them: `10_deseq2_volcano.pdf` comes from
+`src/analysis/10_deseq2.R`. Prefer vector formats (PDF, SVG); raster output at 300 dpi
+or higher.

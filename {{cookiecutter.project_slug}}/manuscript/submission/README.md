@@ -1,6 +1,6 @@
 # manuscript/submission/
 
-每次投稿建一个子目录，记录完整的投稿状态：
+One directory per submission, capturing the complete state of that attempt:
 
 ```
 submission/
@@ -11,9 +11,10 @@ submission/
 │   └── decision_letter.pdf
 └── 02_elife_20260915/
     ├── manuscript_submitted.pdf
-    ├── response_to_reviewers.md      <- 逐条回复审稿意见
+    ├── response_to_reviewers.md      <- point-by-point rebuttal
     └── manuscript_revised.pdf
 ```
 
-约定：投稿当天把提交的**确切版本**存进来，之后正文继续在 `main/` 迭代。
-半年后返修时，你需要知道审稿人看到的到底是哪一版。
+Store the **exact version submitted** on the day it is submitted; the text in `main/`
+keeps moving afterwards. Six months later, during revision, you will need to know
+precisely what the reviewers saw.

@@ -1,16 +1,20 @@
 # wetlab/
 
-湿实验这一侧的**人写记录**。全部是纯文本或小表格，全部纳入 git 版本控制。
+**Human-written** records from the bench. Everything here is plain text or a small
+table, and everything is tracked in git.
 
-仪器产出的数据文件（fastq、显微镜图像、流式 fcs、酶标仪导出）**不放这里**，
-放 `data/raw/`。这样整个项目只有一个"原始数据"位置，脚本路径和备份策略不会分叉。
-本目录只负责回答"这些数据是怎么产生的"。
+Instrument output — FASTQ files, microscopy images, FCS files, plate reader exports —
+does **not** belong here. It goes to `data/raw/`. That keeps exactly one "raw data"
+location in the project, so script paths and backup policy never fork. This directory
+answers a different question: how those data came to exist.
 
-| 子目录 | 放什么 |
+| Subdirectory | Contents |
 | --- | --- |
-| `protocols/` | 可复用的操作流程（SOP），一个方法一个文件 |
-| `experiments/` | 一次具体实验的完整记录，按 `YYYYMMDD_简称/` 建目录 |
-| `inventory/` | 质粒、引物、抗体、细胞系、gRNA 等物料清单 |
+| `protocols/` | Reusable standard operating procedures, one method per file |
+| `experiments/` | A complete record of one experiment, in `YYYYMMDD_short_name/` |
+| `inventory/` | Plasmids, primers, antibodies, cell lines, gRNAs |
 
-**协议与实验的区别**：`protocols/` 写"怎么做"，可复用、会迭代版本；
-`experiments/` 写"某天做了什么、用了哪个版本的协议、结果如何"，一次性、不修改历史。
+**Protocols vs. experiments:** `protocols/` describes *how something is done* — reusable,
+versioned, revised over time. `experiments/` describes *what was done on a given day*,
+which protocol version was used, and what came out. Experiment records are written once
+and never rewritten.

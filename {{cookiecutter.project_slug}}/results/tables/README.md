@@ -1,9 +1,12 @@
 # results/tables/
 
-统计分析输出的表格：差异表达结果、富集分析结果、QC 汇总等。
+Tabular output from analysis scripts: differential expression results, enrichment
+results, QC summaries.
 
-约定：
+Conventions:
 
-- 用 `.tsv` 或 `.csv`，不要用 `.xlsx`（会丢失精度、基因名被 Excel 改成日期）。
-- 文件名带生成日期或脚本编号，便于对应手稿里的补充表格。
-- 大表（>50 MB）压缩为 `.tsv.gz`。
+- Use `.tsv` or `.csv`, not `.xlsx` — Excel silently truncates precision and converts
+  gene symbols to dates.
+- Include a date or the source script number in the filename so supplementary tables can
+  be traced back.
+- Compress tables above ~50 MB as `.tsv.gz`.

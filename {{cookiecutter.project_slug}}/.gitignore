@@ -1,17 +1,20 @@
-# ---- 数据：默认全部排除，只保留说明文件 ----
+# ---- Data: excluded by default, except the sample sheet and README files ----
 data/**
 !data/**/
 !data/**/README.md
+!data/metadata/**
+data/metadata/**/*.rds
+data/metadata/**/*.h5ad
 
-# ---- 脚本产物：可重跑，不进版本库 ----
+# ---- Script output: regenerable, not versioned ----
 results/figures/**
 !results/figures/README.md
 results/tables/**
 !results/tables/README.md
 
-# ---- 环境 ----
+# ---- Environment ----
 .pixi/
-# pixi.lock 应当提交，它保证环境可复现
+# pixi.lock MUST be committed; it is what makes the environment reproducible
 
 # ---- R ----
 .Rhistory
@@ -35,7 +38,7 @@ __pycache__/
 *.blg
 *.synctex.gz
 
-# ---- 系统 ----
+# ---- OS ----
 .DS_Store
 Thumbs.db
 *~

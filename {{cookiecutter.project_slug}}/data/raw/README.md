@@ -1,11 +1,12 @@
 # data/raw/
 
-仪器原始输出。**只读，永不就地修改。**
+Instrument output. **Read-only; never modified in place.**
 
-任何改名、清洗、过滤、格式转换都写成 `src/data/` 下的脚本，输出到 `data/interim/`。
-如果你发现自己想直接编辑这里的文件，说明缺了一个脚本。
+Renaming, cleaning, filtering and format conversion are all done by scripts in
+`src/data/` that write to `data/interim/`. If you find yourself wanting to edit a file
+here directly, a script is missing.
 
-建议按检测类型分层：
+Organise by assay type:
 
 ```
 raw/
@@ -16,11 +17,14 @@ raw/
 └── qpcr/
 ```
 
-拿到数据后立刻做两件事：
+Do two things the moment data arrives:
 
-1. **设为只读**：`chmod -R a-w data/raw/<新数据目录>`
-2. **记校验和**：`find data/raw -type f -exec sha256sum {} + > data/raw/CHECKSUMS.sha256`
-   （日后可用 `sha256sum -c` 验证文件未被改动或损坏）
+1. **Make it read-only:** `chmod -R a-w data/raw/<new_directory>`
+2. **Record checksums:**
+   `find data/raw -type f -exec sha256sum {} + > data/raw/CHECKSUMS.sha256`
+   (verify later with `sha256sum -c`, which catches both silent corruption and
+   accidental edits)
 
-每个新数据目录里放一个 `SOURCE.md`，写明：来源（测序公司/仪器）、接收日期、
-对应的 `experiment_id`、对应的 `sample_id` 列表。
+Each new data directory should contain a `SOURCE.md` recording: origin (facility or
+instrument), date received, the corresponding `experiment_id`, and the list of
+`sample_id` values it covers.

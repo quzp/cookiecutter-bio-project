@@ -1,6 +1,5 @@
-"""生成后处理：挑选许可证、填充日期、初始化 git 仓库。"""
+"""Post-generation: select license, fill dates, prune unused files, init git."""
 import datetime
-import os
 import shutil
 import subprocess
 import sys
@@ -25,41 +24,34 @@ TEXT_SUFFIXES = {".md", ".txt", ".toml", ".yml", ".yaml", ".cff", ".tsv", ".R", 
 
 
 def pick_license():
-    src_dir = PROJECT_DIR / "licenses"
     if LICENSE in LICENSE_SOURCES:
         shutil.copy(PROJECT_DIR / LICENSE_SOURCES[LICENSE], PROJECT_DIR / "LICENSE")
-    shutil.rmtree(src_dir, ignore_errors=True)
+    shutil.rmtree(PROJECT_DIR / "licenses", ignore_errors=True)
 
 
 def fill_placeholders():
     today = datetime.date.today()
-    repl = {
-        "__YEAR__": str(today.year),
-        "__DATE__": today.isoformat(),
-    }
-    for path in PROJECT_DIR.rglob("*"):
-        if not path.is_file() or path.suffix not in TEXT_SUFFIXES:
-            continue
-        if path.name == "LICENSE" or path.suffix in TEXT_SUFFIXES:
-            try:
-                text = path.read_text(encoding="utf-8")
-            except UnicodeDecodeError:
-                continue
-            new = text
-            for key, val in repl.items():
-                new = new.replace(key, val)
-            if new != text:
-                path.write_text(new, encoding="utf-8")
+    repl = {"__YEAR__": str(today.year), "__DATE__": today.isoformat()}
+    targets = [p for p in PROJECT_DIR.rglob("*") if p.is_file() and p.suffix in TEXT_SUFFIXES]
     lic = PROJECT_DIR / "LICENSE"
     if lic.exists():
-        text = lic.read_text(encoding="utf-8")
+        targets.append(lic)
+    for path in targets:
+        try:
+            text = path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue
+        new = text
         for key, val in repl.items():
-            text = text.replace(key, val)
-        lic.write_text(text, encoding="utf-8")
+            new = new.replace(key, val)
+        if new != text:
+            path.write_text(new, encoding="utf-8")
 
 
-def drop_unused_notebooks():
-    nb = PROJECT_DIR / "notebooks"
+def prune_notebooks():
+    nb = PROJECT_DIR / "src" / "notebooks"
+    if not nb.exists():
+        return
     if USE_QUARTO != "yes":
         for f in nb.glob("*.qmd"):
             f.unlink()
@@ -69,13 +61,21 @@ def drop_unused_notebooks():
     if LANGUAGE == "R":
         for f in nb.glob("*_python.qmd"):
             f.unlink()
+    if LANGUAGE == "R":
+        util = PROJECT_DIR / "src" / "utils" / "paths.py"
+        if util.exists():
+            util.unlink()
+    if LANGUAGE == "Python":
+        util = PROJECT_DIR / "src" / "utils" / "paths.R"
+        if util.exists():
+            util.unlink()
 
 
 def init_git():
     if INIT_GIT != "yes":
         return
     if shutil.which("git") is None:
-        sys.stderr.write("WARNING: 未找到 git，跳过仓库初始化。\n")
+        sys.stderr.write("WARNING: git not found; skipping repository initialisation.\n")
         return
     try:
         subprocess.run(["git", "init", "-q", "-b", "main"], cwd=PROJECT_DIR, check=True)
@@ -86,29 +86,29 @@ def init_git():
             check=True,
         )
     except subprocess.CalledProcessError as exc:
-        sys.stderr.write("WARNING: git 初始化失败（%s），可稍后手动执行。\n" % exc)
+        sys.stderr.write("WARNING: git init failed (%s); run it manually later.\n" % exc)
 
 
 def goodbye():
     print("")
-    print("  项目已创建: %s" % PROJECT_DIR)
+    print("  Project created: %s" % PROJECT_DIR)
     print("")
-    print("  下一步:")
+    print("  Next steps:")
     print("    cd %s" % PROJECT_SLUG)
-    print("    pixi install            # 解析并锁定环境")
-    print("    pixi run check          # 验证 R / Python 可用")
+    print("    pixi install            # resolve and lock the environment")
+    print("    pixi run check          # verify the interpreter and core packages")
     print("")
     if GITHUB_USER:
         print("    git remote add origin git@github.com:%s/%s.git" % (GITHUB_USER, PROJECT_SLUG))
         print("    git push -u origin main")
         print("")
-    print("  先读 README.md 里的\"工作约定\"，再开始往 wetlab/ 和 data/raw/ 放东西。")
+    print("  Read the Working conventions section in README.md before adding data.")
     print("")
 
 
 if __name__ == "__main__":
     pick_license()
-    drop_unused_notebooks()
+    prune_notebooks()
     fill_placeholders()
     init_git()
     goodbye()

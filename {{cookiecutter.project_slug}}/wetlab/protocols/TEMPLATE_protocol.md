@@ -1,40 +1,40 @@
-# 协议名称
+# Protocol title
 
-- **版本**：v1.0
-- **最后修订**：YYYY-MM-DD
-- **作者**：
-- **预计耗时**：
-- **适用范围**：适用于哪类样本/细胞系/实验目的
+- **Version:** v1.0
+- **Last revised:** YYYY-MM-DD
+- **Author:**
+- **Estimated duration:**
+- **Scope:** which sample types, cell lines or experimental purposes this applies to
 
-## 试剂与耗材
+## Reagents and consumables
 
-| 名称 | 厂家 | 货号 | 储存条件 | 备注 |
+| Item | Vendor | Catalogue no. | Storage | Notes |
 | --- | --- | --- | --- | --- |
 |  |  |  |  |  |
 
-## 设备
+## Equipment
 
-| 设备 | 型号 | 关键参数 |
+| Instrument | Model | Key settings |
 | --- | --- | --- |
 |  |  |  |
 
-## 操作步骤
+## Procedure
 
 1.
 2.
 3.
 
-## 质控标准
+## Quality control
 
-- 通过判据：
-- 常见失败模式与排查：
+- Pass criteria:
+- Common failure modes and troubleshooting:
 
-## 安全与废弃物
+## Safety and waste disposal
 
 -
 
-## 修订记录
+## Revision history
 
-| 版本 | 日期 | 改动 | 修订人 |
+| Version | Date | Change | Author |
 | --- | --- | --- | --- |
-| v1.0 | YYYY-MM-DD | 初版 | |
+| v1.0 | YYYY-MM-DD | Initial version | |

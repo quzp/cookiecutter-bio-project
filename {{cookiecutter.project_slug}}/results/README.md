@@ -1,10 +1,11 @@
 # results/
 
-脚本产物。**本目录内容全部可以删掉并由 `src/` 下的脚本重建**，因此默认不进 git。
+Script output. Everything here **can be deleted and regenerated** by scripts in `src/`,
+so it is excluded from git by default.
 
-| 子目录 | 说明 |
+| Subdirectory | Contents |
 | --- | --- |
-| `figures/` | 脚本直接输出的图，用于自查和组会 |
-| `tables/` | 统计结果表：差异表达列表、富集结果、QC 汇总 |
+| `figures/` | Figures written directly by scripts; for your own review and lab meetings |
+| `tables/` | Statistical results: DE gene lists, enrichment output, QC summaries |
 
-`results/figures/` 与 `manuscript/figures/` 的区别见下一节说明，两者不要混用。
+See the note in `figures/README.md` on how this differs from `manuscript/figures/`.

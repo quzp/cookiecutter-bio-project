@@ -4,70 +4,74 @@
 
 | | |
 | --- | --- |
-| 负责人 | {{ cookiecutter.author_name }}{% if cookiecutter.institution %}，{{ cookiecutter.institution }}{% endif %} |
-| 创建日期 | __DATE__ |
-| 分析语言 | {{ cookiecutter.primary_language }} |
-| 状态 | 进行中 |
+| Lead | {{ cookiecutter.author_name }}{% if cookiecutter.institution %}, {{ cookiecutter.institution }}{% endif %} |
+| Started | __DATE__ |
+| Analysis language | {{ cookiecutter.primary_language }} |
+| Status | In progress |
 
-## 快速开始
+## Getting started
 
 ```bash
-pixi install          # 按 pixi.toml 解析并锁定环境
-pixi run check        # 确认解释器与核心包可用
-pixi shell            # 进入环境交互式工作
+pixi install          # resolve and lock the environment from pixi.toml
+pixi run check        # confirm the interpreter and core packages work
+pixi shell            # enter the environment interactively
 ```
 
-## 目录结构
+## Directory map
 
 ```
 .
-├── wetlab/         湿实验记录（人写，纯文本，全部进 git）
-│   ├── protocols/      SOP，一个方法一个 .md
-│   ├── experiments/    按 YYYYMMDD_简称/ 建子目录
-│   └── inventory/      质粒、引物、抗体、细胞系、gRNA 清单
-├── metadata/       样本表：连接湿实验与测序数据的唯一接头
-├── data/           机器产出的数据（默认不进 git）
-│   ├── raw/            仪器原始输出，只读不改
-│   ├── external/       公共数据库下载
-│   ├── interim/        中间结果
-│   └── processed/      可直接分析的最终数据集
-├── src/            分析代码
-│   ├── data/           预处理、QC、格式转换
-│   ├── analysis/       统计建模、差异表达、富集
-│   ├── visualization/  出图脚本
-│   └── utils/          通用函数、路径与配置读取
-├── notebooks/      探索性分析，命名带序号
-├── results/        脚本产物
-│   ├── figures/        可随时重跑的图，不进 git
-│   └── tables/         统计输出表
-├── manuscript/     手稿
-│   ├── main/           正文
-│   ├── figures/        人工拼版后的成品图，进 git
-│   ├── supplement/     补充材料
-│   └── submission/     各期刊投稿版本与审稿回复
-├── docs/           文献笔记、组会记录、方法学参考
-└── config/         分析参数与样本分组配置
+├── wetlab/         Human-written bench records (plain text, tracked in git)
+│   ├── protocols/      Reusable SOPs, one method per file
+│   ├── experiments/    One directory per experiment, YYYYMMDD_short_name/
+│   └── inventory/      Plasmids, primers, antibodies, cell lines, gRNAs
+├── data/           Machine-generated data (excluded from git except metadata/)
+│   ├── metadata/       Sample sheet linking bench work to sequencing output
+│   ├── raw/            Instrument output, read-only
+│   ├── external/       Public datasets and references
+│   ├── interim/        Intermediate results, always regenerable
+│   └── processed/      Analysis-ready datasets
+├── src/            All code
+│   ├── data/           Preprocessing, QC, format conversion
+│   ├── analysis/       Statistics and modelling
+│   ├── visualization/  Figure scripts
+│   ├── notebooks/      Exploratory analysis
+│   └── utils/          Shared helpers: paths, config, plotting theme
+├── results/        Script output
+│   ├── figures/        Regenerable figures, excluded from git
+│   └── tables/         Statistical result tables
+├── manuscript/     Everything aimed at publication
+│   ├── main/           Manuscript text
+│   ├── figures/        Hand-assembled final figures, tracked in git
+│   ├── supplement/     Supplementary material
+│   └── submission/     Per-journal versions and rebuttals
+└── management/     Running the project rather than doing the science
+    ├── config/         Analysis parameters and external paths
+    ├── docs/           Literature notes, meeting minutes, method surveys
+    └── reports/        Progress reports, committee updates, grant reporting
 ```
 
-每个目录下都有 `README.md` 说明具体用法。
+Every directory contains a `README.md` describing exactly what belongs in it.
 
-## 工作约定
+## Working conventions
 
-1. **`data/raw/` 只读。** 任何清洗、改名、过滤都写成 `src/data/` 下的脚本，
-   输出到 `data/interim/` 或 `data/processed/`。原始文件本身永不就地修改。
-2. **每个湿实验开一个目录。** `wetlab/experiments/YYYYMMDD_简称/`，
-   照着 `wetlab/experiments/TEMPLATE_experiment.md` 填。
-3. **产生样本就登记。** 新细胞、新文库、新测序批次，当天写进 `metadata/samples.tsv`，
-   `sample_id` 一经写入不得更改。
-4. **`results/figures/` 里的图必须由 `src/` 的脚本生成。** 手动 PS/AI 拼版后的成品
-   放 `manuscript/figures/`，两者不混。
-5. **`CHANGELOG.md` 记节点。** 新数据批次、分析方法变更、投稿与返修，各一行。
-6. **大文件不进 git。** 见 `.gitignore`；确需版本化的中等文件用 Git LFS
-   （`.gitattributes` 里有注释掉的配置）。
+1. **`data/raw/` is read-only.** Any renaming, filtering or conversion is written as a
+   script in `src/data/` that outputs to `data/interim/` or `data/processed/`. Raw files
+   are never edited in place. If you find yourself wanting to, a script is missing.
+2. **One directory per experiment.** Create `wetlab/experiments/YYYYMMDD_short_name/`
+   and fill in a copy of `TEMPLATE_experiment.md`.
+3. **Register samples the day they exist.** New cells, libraries or sequencing batches go
+   into `data/metadata/samples.tsv` immediately. A `sample_id` is never changed or reused.
+4. **Figures in `results/figures/` must come from a script in `src/`.** Hand-assembled
+   panels go to `manuscript/figures/`. The two are never mixed.
+5. **`CHANGELOG.md` records turning points:** new data batches, changed analysis methods,
+   submissions and revisions — one line each.
+6. **Large files stay out of git.** See `.gitignore`. For mid-size files that genuinely
+   need versioning, `.gitattributes` has commented Git LFS rules.
 
-## 数据备份
+## Data backup
 
-`data/` 不在 git 里，备份责任在你自己。建议：
+`data/` is not in git, so backup is your responsibility. Suggested practice:
 
-- `data/raw/` 在数据产生当天同步到实验室服务器 / 对象存储，并设为只读。
-- 记录备份位置到本节，例如：`原始数据镜像：<路径或链接>`
+- Mirror `data/raw/` to lab storage or object storage the day it arrives, then set read-only.
+- Record the backup location here, e.g. `Raw data mirror: <path or link>`.

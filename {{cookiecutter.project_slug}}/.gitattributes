@@ -11,7 +11,7 @@
 *.tif    binary
 *.xlsx   binary
 
-# ---- Git LFS（需要时取消注释并执行 `git lfs install`）----
-# 适用于确需版本化、但不适合直接塞进 git 的中等文件，例如手稿成品图
+# ---- Git LFS (uncomment and run `git lfs install` if needed) ----
+# For mid-size files that genuinely need versioning, e.g. final manuscript figures
 # manuscript/figures/*.tif  filter=lfs diff=lfs merge=lfs -text
 # manuscript/figures/*.pdf  filter=lfs diff=lfs merge=lfs -text

@@ -1,11 +1,12 @@
 # manuscript/figures/
 
-进入手稿的**成品图**：由 `results/figures/` 里的单图经人工拼版、加字母标号、
-统一字号和配色后得到。这些文件**进 git**，因为它们包含了无法脚本化的人工排版工作。
+**Final figures** for the manuscript: single panels from `results/figures/` assembled by
+hand, with letter labels and unified fonts and colours. These files **are tracked in
+git**, because they carry manual layout work that cannot be scripted.
 
-约定：
+Conventions:
 
-- 每个 figure 一个目录或一个文件：`figure1.ai` / `figure1.pdf` / `figure1.png`。
-- 保留可编辑的源文件（`.ai` / `.svg` / `.pptx`），不要只留导出的位图。
-- 同目录放 `figure_legends.md` 存图注，正文引用时直接复制，避免图注与图脱节。
-- 体积较大的 `.tif` / `.ai` 考虑用 Git LFS，配置见根目录 `.gitattributes`。
+- One file or directory per figure: `figure1.ai` / `figure1.pdf` / `figure1.png`.
+- Keep the editable source (`.ai`, `.svg`, `.pptx`), not just the exported raster.
+- Keep `figure_legends.md` alongside the figures so legends never drift from the panels.
+- For large `.tif` or `.ai` files, consider Git LFS; see `.gitattributes` at the root.

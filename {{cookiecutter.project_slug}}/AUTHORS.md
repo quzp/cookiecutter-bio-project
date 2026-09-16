@@ -1,17 +1,19 @@
 # Authors
 
-## 主要贡献者
+## Primary contributors
 
 - **{{ cookiecutter.author_name }}**{% if cookiecutter.institution %} — {{ cookiecutter.institution }}{% endif %}{% if cookiecutter.orcid %} — ORCID: {{ cookiecutter.orcid }}{% endif %}
-  - 角色：项目设计、实验执行、数据分析
+  - Role: project design, experimental work, data analysis
 
-## 其他贡献者
+## Other contributors
 
-<!-- 按 CRediT 分类记录，便于日后确定作者顺序：
+<!-- Record contributions by CRediT category as they happen; this is what
+     authorship order discussions should be based on later:
      Conceptualization / Methodology / Investigation / Formal analysis /
-     Data curation / Writing – original draft / Writing – review & editing /
+     Data curation / Writing - original draft / Writing - review & editing /
      Supervision / Funding acquisition -->
 
-## 致谢
+## Acknowledgements
 
-<!-- 提供试剂、设备机时、技术支持但不列为作者的人 -->
+<!-- People who provided reagents, instrument time or technical support
+     without qualifying for authorship -->

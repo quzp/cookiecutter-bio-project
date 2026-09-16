@@ -1,5 +1,5 @@
 ---
-title: "01 探索性分析示例"
+title: "01 Exploratory analysis (R)"
 author: "{{ cookiecutter.author_name }}"
 date: today
 format:
@@ -9,7 +9,7 @@ format:
     embed-resources: true
 ---
 
-## 环境与数据
+## Setup
 
 ```{r}
 #| label: setup
@@ -21,11 +21,11 @@ samples <- load_samples()
 str(samples)
 ```
 
-## 分析
+## Analysis
 
-<!-- 在这里探索。定型后把代码搬到 src/ 下的脚本。 -->
+<!-- Explore here. Move settled code into a script under src/. -->
 
-## 会话信息
+## Session info
 
 ```{r}
 sessionInfo()

@@ -1,101 +1,107 @@
 # cookiecutter-bio-project
 
-一个轻量的生物学研究项目脚手架：一条命令生成**湿实验 + 干实验**双轨的目录结构，
-每个目录自带说明文件，不含任何多余的构建系统。
+A lightweight scaffold for biology research projects. One command creates a
+**wet-lab + dry-lab** directory structure where every folder carries its own
+README explaining what belongs in it — and nothing else.
 
-设计理念沿袭 [Cookiecutter Data Science](https://github.com/drivendataorg/cookiecutter-data-science)
-和 [cookiecutter-reproducible-science](https://github.com/mkrapp/cookiecutter-reproducible-science)，
-但做了三点针对性改造：
+The philosophy follows [Cookiecutter Data Science](https://github.com/drivendataorg/cookiecutter-data-science)
+and [cookiecutter-reproducible-science](https://github.com/mkrapp/cookiecutter-reproducible-science),
+with three changes aimed at bench-plus-computation projects:
 
-1. **湿实验与干实验在同一个仓库里**，`wetlab/` 存人写的记录（方案、实验、库存），
-   `data/` 存机器产出的数据，不出现两个"原始数据"位置。
-2. **`metadata/samples.tsv` 是两端的唯一接头**，强制登记"这管细胞对应哪个 fastq"。
-3. **环境用 [pixi](https://pixi.sh)**，`pixi.lock` 跨平台锁定 R / Bioconductor / Python 依赖，
-   比 `environment.yml` 更可复现，也不需要先装 conda。
+1. **Wet lab and dry lab live in one repository.** `wetlab/` holds what people write
+   (protocols, experiment records, inventory); `data/` holds what instruments produce.
+   There is exactly one "raw data" location, so script paths and backup policy never fork.
+2. **`data/metadata/samples.tsv` is the single joint between the two sides.** It forces
+   you to record which tube of cells corresponds to which FASTQ, on the day it happens.
+3. **Environments are managed with [pixi](https://pixi.sh).** `pixi.lock` pins R,
+   Bioconductor and Python dependencies across platforms, and does not require a
+   pre-existing conda installation.
 
-## 使用
+## Usage
 
 ```bash
-# 安装 cookiecutter（推荐用 uv 或 pipx，避免污染系统 Python）
-uv tool install cookiecutter        # 或：pipx install cookiecutter
+# Install cookiecutter (uv or pipx keeps it out of your system Python)
+uv tool install cookiecutter        # or: pipx install cookiecutter
 
-# 从 GitHub 直接生成
+# Generate from GitHub
 cookiecutter gh:YOUR_GITHUB_USERNAME/cookiecutter-bio-project
 
-# 或从本地目录生成
+# ...or from a local clone
 cookiecutter path/to/cookiecutter-bio-project
 ```
 
-交互式填写以下字段：
+You will be prompted for:
 
-| 字段 | 说明 |
+| Field | Purpose |
 | --- | --- |
-| `project_name` | 项目全名，例如 `Retinal Organoid EZH2 Screen` |
-| `project_slug` | 目录名，默认由项目名自动转换 |
-| `project_short_description` | 一句话描述，会写进 README 和 CITATION.cff |
-| `author_name` / `author_email` / `orcid` / `institution` | 作者信息 |
-| `github_username` | 用于生成远程仓库地址提示 |
-| `primary_language` | `R` / `Python` / `R + Python`，决定 `pixi.toml` 的依赖 |
-| `use_quarto` | 是否在 `notebooks/` 放 Quarto 模板并加入 pixi 依赖 |
+| `project_name` | Full project title, e.g. `Retinal Organoid EZH2 Screen` |
+| `project_slug` | Directory name; derived from the title by default |
+| `project_short_description` | One line; written into README and CITATION.cff |
+| `author_name` / `author_email` / `orcid` / `institution` | Author metadata |
+| `github_username` | Used to print the remote-setup command at the end |
+| `primary_language` | `R` / `Python` / `R + Python`; determines `pixi.toml` dependencies |
+| `use_quarto` | Adds Quarto to the environment and ships notebook templates |
 | `open_source_license` | `MIT` / `BSD-3-Clause` / `CC-BY-4.0` / `None` |
-| `init_git_repo` | 是否自动 `git init` 并创建首次 commit |
+| `init_git_repo` | Runs `git init` and creates the first commit |
 
-## 生成的目录结构
+## Generated structure
 
 ```
 your_project/
-├── README.md                 <- 项目概览、目录说明、工作约定
-├── CHANGELOG.md              <- 数据批次、方法变更、投稿版本的时间线
-├── AUTHORS.md
-├── CITATION.cff              <- 机器可读的引用信息（GitHub / Zenodo 识别）
+├── README.md                 <- Overview, directory map, working conventions
+├── CHANGELOG.md              <- Data batches, method changes, manuscript versions
+├── AUTHORS.md                <- Contributors, recorded by CRediT role
+├── CITATION.cff              <- Machine-readable citation (GitHub / Zenodo)
 ├── LICENSE
-├── pixi.toml                 <- 计算环境定义
-├── .gitignore                <- 默认忽略大数据与生成图表
-├── .gitattributes            <- 行尾规范 + Git LFS 备选配置
+├── pixi.toml                 <- Computational environment
+├── .gitignore                <- Excludes bulk data and regenerable figures
+├── .gitattributes            <- Line endings + optional Git LFS rules
 │
-├── wetlab/                   <- 湿实验：人写的纯文本记录，全部纳入 git
-│   ├── protocols/            <- SOP，一个方法一个 .md（含模板）
-│   ├── experiments/          <- 按 YYYYMMDD_简称/ 建子目录（含模板）
-│   └── inventory/            <- 质粒、引物、抗体、细胞系、gRNA 清单
+├── wetlab/                   <- Human-written records; all tracked in git
+│   ├── protocols/                Reusable SOPs, one method per file
+│   ├── experiments/              One directory per experiment, YYYYMMDD_short_name/
+│   └── inventory/                Plasmids, primers, antibodies, cell lines, gRNAs
 │
-├── metadata/                 <- 湿/干两端的接头
-│   └── samples.tsv           <- 样本ID ↔ 实验编号 ↔ 文库ID ↔ 分组
+├── data/                     <- Machine-generated data; excluded from git
+│   ├── metadata/                 Sample sheet — the wet/dry joint (tracked in git)
+│   ├── raw/                      Instrument output, read-only
+│   ├── external/                 Public datasets, references, collaborator data
+│   ├── interim/                  Intermediate results, always regenerable
+│   └── processed/                Analysis-ready datasets
 │
-├── data/                     <- 机器产出的数据，默认不进 git
-│   ├── raw/                  <- 仪器原始输出，只读不改
-│   ├── external/             <- 公共数据库下载（GEO、Ensembl 等）
-│   ├── interim/              <- 中间结果（bam、count matrix）
-│   └── processed/            <- 可直接分析的最终数据集
+├── src/                      <- All code
+│   ├── data/                     Preprocessing, QC, format conversion
+│   ├── analysis/                 Statistics and modelling
+│   ├── visualization/            Figure scripts
+│   ├── notebooks/                Exploratory analysis (Quarto / Jupyter)
+│   └── utils/                    Shared helpers: paths, config, plotting theme
 │
-├── src/                      <- 分析代码
-│   ├── data/                 <- 预处理、QC、格式转换
-│   ├── analysis/             <- 统计建模、差异表达、富集
-│   ├── visualization/        <- 出图脚本
-│   └── utils/                <- 通用函数、路径与配置读取
+├── results/                  <- Script output; regenerable, excluded from git
+│   ├── figures/
+│   └── tables/
 │
-├── notebooks/                <- 探索性分析，命名带序号
-├── results/
-│   ├── figures/              <- 脚本产物，可随时重跑，不进 git
-│   └── tables/               <- 统计输出表
+├── manuscript/               <- Everything aimed at publication
+│   ├── main/
+│   ├── figures/                  Hand-assembled final figures (tracked in git)
+│   ├── supplement/
+│   └── submission/               Per-journal versions, cover letters, rebuttals
 │
-├── manuscript/
-│   ├── main/                 <- 正文
-│   ├── figures/              <- 人工拼版后的成品图，进 git
-│   ├── supplement/           <- 补充材料
-│   └── submission/           <- 各期刊投稿版本、cover letter、审稿回复
-│
-├── docs/                     <- 文献笔记、组会记录、方法学参考
-└── config/                   <- 分析参数与样本分组配置
+└── management/               <- Running the project rather than doing the science
+    ├── config/                   Analysis parameters and paths
+    ├── docs/                     Literature notes, meeting minutes, method surveys
+    └── reports/                  Progress reports, committee updates, grant reporting
 ```
 
-## 自己修改模板
+## Customising the template
 
-- 增删目录：直接改 `{{cookiecutter.project_slug}}/` 下的结构，每个目录至少保留一个文件
-  （空目录不会被 git 追踪，也就不会出现在生成结果里）。
-- 增加提问：在 `cookiecutter.json` 加字段，用 `{{ cookiecutter.字段名 }}` 在任意文件内容或文件名中引用。
-- 生成后的自动处理写在 `hooks/post_gen_project.py`（选许可证、填年份、初始化 git）。
-- 输入校验写在 `hooks/pre_gen_project.py`。
+- **Add or remove directories:** edit the tree under `{{cookiecutter.project_slug}}/`.
+  Every directory needs at least one file — git does not track empty directories,
+  so an empty folder will never reach the generated project.
+- **Add a prompt:** add a key to `cookiecutter.json` and reference it as
+  `{{ cookiecutter.your_key }}` in any file content or file name.
+- **Post-generation logic** lives in `hooks/post_gen_project.py` (license selection,
+  date substitution, git init). Input validation lives in `hooks/pre_gen_project.py`.
 
 ## License
 
-模板本身以 MIT 协议发布，生成的项目使用你选择的协议。
+The template is MIT licensed. Generated projects use whichever license you select.

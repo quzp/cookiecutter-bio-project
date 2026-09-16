@@ -1,14 +1,14 @@
 # manuscript/
 
-手稿相关的一切。
+Everything aimed at publication.
 
-| 子目录 | 说明 |
+| Subdirectory | Contents |
 | --- | --- |
-| `main/` | 正文。Markdown / Quarto / LaTeX / docx 均可 |
-| `figures/` | **人工拼版后的成品图**，进 git |
-| `supplement/` | 补充图、补充表、补充方法 |
-| `submission/` | 各期刊的投稿版本、cover letter、审稿意见与回复 |
+| `main/` | Manuscript text — Markdown, Quarto, LaTeX or docx |
+| `figures/` | **Hand-assembled final figures**, tracked in git |
+| `supplement/` | Supplementary figures, tables and methods |
+| `submission/` | Per-journal versions, cover letters, reviews and rebuttals |
 
-写方法学部分时，材料来源直接取自 `wetlab/protocols/`（试剂厂家货号）与
-`wetlab/inventory/`（细胞系、抗体批号），分析部分取自 `src/` 与 `pixi.lock`
-（软件版本），不要凭记忆写。
+When writing the Methods section, take reagent vendors and catalogue numbers from
+`wetlab/protocols/`, cell line and antibody lots from `wetlab/inventory/`, and software
+versions from `pixi.lock` — not from memory.

@@ -1,17 +1,18 @@
 # Changelog
 
-记录会影响结论的事件：新数据批次、分析方法变更、手稿版本。
-格式参考 [Keep a Changelog](https://keepachangelog.com/)，日期用 ISO 8601。
+Events that can affect conclusions: new data batches, changed analysis methods,
+manuscript milestones. Format follows [Keep a Changelog](https://keepachangelog.com/);
+dates are ISO 8601.
 
 ## [Unreleased]
 
 ### Added
-- __DATE__ 项目初始化。
+- __DATE__ Project initialised.
 
 ### Changed
 
 ### Data
-<!-- 新测序批次、新公共数据集，注明样本数与来源 -->
+<!-- New sequencing batches or public datasets; note sample count and source -->
 
 ### Manuscript
-<!-- 投稿、返修、接收 -->
+<!-- Submission, revision, acceptance -->
