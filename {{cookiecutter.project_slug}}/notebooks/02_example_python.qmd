@@ -1,0 +1,33 @@
+---
+title: "02 探索性分析示例（Python）"
+author: "{{ cookiecutter.author_name }}"
+date: today
+format:
+  html:
+    toc: true
+    code-fold: show
+    embed-resources: true
+jupyter: python3
+---
+
+## 环境与数据
+
+```{python}
+import sys
+sys.path.insert(0, "..")
+from src.utils.paths import load_samples
+
+samples = load_samples()
+samples.head()
+```
+
+## 分析
+
+<!-- 在这里探索。定型后把代码搬到 src/ 下的脚本。 -->
+
+## 会话信息
+
+```{python}
+import sys
+print(sys.version)
+```

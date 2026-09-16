@@ -1,0 +1,14 @@
+{
+  "project_name": "My Bio Project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "project_short_description": "A reproducible wet-lab + dry-lab research project.",
+  "author_name": "Your Name",
+  "author_email": "you@example.org",
+  "orcid": "",
+  "institution": "",
+  "github_username": "",
+  "primary_language": ["R", "Python", "R + Python"],
+  "use_quarto": ["yes", "no"],
+  "open_source_license": ["MIT", "BSD-3-Clause", "CC-BY-4.0", "None"],
+  "init_git_repo": ["yes", "no"]
+}

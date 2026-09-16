@@ -1,0 +1,38 @@
+[workspace]
+name = "{{ cookiecutter.project_slug }}"
+version = "0.1.0"
+description = "{{ cookiecutter.project_short_description }}"
+authors = ["{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64", "osx-arm64", "osx-64"]
+
+# 需要 pixi >= 0.40。安装：curl -fsSL https://pixi.sh/install.sh | bash
+# 添加依赖用 `pixi add <pkg>`，会自动更新本文件与 pixi.lock。
+# pixi.lock 必须提交到 git —— 它才是环境可复现的凭证。
+
+[dependencies]
+{% if cookiecutter.primary_language in ["R", "R + Python"] %}r-base = ">=4.4"
+r-tidyverse = "*"
+r-here = "*"            # 用 here::here() 而非相对路径，脚本从任何位置都能跑
+r-data-table = "*"
+r-sessioninfo = "*"
+{% endif %}{% if cookiecutter.primary_language in ["Python", "R + Python"] %}python = ">=3.11"
+pandas = "*"
+numpy = "*"
+matplotlib = "*"
+pyyaml = "*"
+{% endif %}{% if cookiecutter.use_quarto == "yes" %}quarto = "*"
+{% endif %}
+# 常用生信包（按需取消注释，或用 pixi add 添加）
+# bioconductor-deseq2 = "*"
+# bioconductor-clusterprofiler = "*"
+# bioconductor-complexheatmap = "*"
+# samtools = "*"
+# fastqc = "*"
+# multiqc = "*"
+
+[tasks]
+{% if cookiecutter.primary_language in ["R", "R + Python"] %}check = "Rscript -e 'sessioninfo::session_info()'"
+{% else %}check = "python -c 'import sys, pandas; print(sys.version); print(pandas.__version__)'"
+{% endif %}{% if cookiecutter.use_quarto == "yes" %}render = "quarto render notebooks"
+{% endif %}

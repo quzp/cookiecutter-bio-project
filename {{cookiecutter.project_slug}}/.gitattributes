@@ -1,0 +1,17 @@
+* text=auto eol=lf
+
+*.R      text diff=r
+*.qmd    text
+*.md     text
+*.tsv    text
+*.csv    text
+
+*.png    binary
+*.pdf    binary
+*.tif    binary
+*.xlsx   binary
+
+# ---- Git LFS（需要时取消注释并执行 `git lfs install`）----
+# 适用于确需版本化、但不适合直接塞进 git 的中等文件，例如手稿成品图
+# manuscript/figures/*.tif  filter=lfs diff=lfs merge=lfs -text
+# manuscript/figures/*.pdf  filter=lfs diff=lfs merge=lfs -text

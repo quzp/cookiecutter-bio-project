@@ -1,0 +1,32 @@
+---
+title: "01 探索性分析示例"
+author: "{{ cookiecutter.author_name }}"
+date: today
+format:
+  html:
+    toc: true
+    code-fold: show
+    embed-resources: true
+---
+
+## 环境与数据
+
+```{r}
+#| label: setup
+#| message: false
+library(here)
+source(here("src", "utils", "paths.R"))
+
+samples <- load_samples()
+str(samples)
+```
+
+## 分析
+
+<!-- 在这里探索。定型后把代码搬到 src/ 下的脚本。 -->
+
+## 会话信息
+
+```{r}
+sessionInfo()
+```

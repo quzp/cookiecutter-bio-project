@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "{{ cookiecutter.project_name }}"
+abstract: "{{ cookiecutter.project_short_description }}"
+type: dataset
+authors:
+  - family-names: "CHANGE_ME"
+    given-names: "{{ cookiecutter.author_name }}"
+{% if cookiecutter.orcid %}    orcid: "{{ cookiecutter.orcid }}"
+{% endif %}{% if cookiecutter.institution %}    affiliation: "{{ cookiecutter.institution }}"
+{% endif %}{% if cookiecutter.author_email %}    email: "{{ cookiecutter.author_email }}"
+{% endif %}date-released: "__DATE__"
+version: "0.1.0"
+{% if cookiecutter.open_source_license != "None" %}license: "{{ cookiecutter.open_source_license }}"
+{% endif %}{% if cookiecutter.github_username %}repository-code: "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+{% endif %}keywords:
+  - CHANGE_ME

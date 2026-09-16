@@ -1,0 +1,30 @@
+# 项目级配置。所有阈值、版本、外部路径集中在此，脚本不硬编码。
+
+project:
+  name: "{{ cookiecutter.project_name }}"
+  organism: "Homo sapiens"
+
+reference:
+  genome_build: "GRCh38"
+  annotation: "GENCODE v45"
+  # 参考基因组体积大，通常放实验室共享位置而非项目目录内
+  genome_fasta: "/path/to/GRCh38.primary_assembly.genome.fa"
+  gtf: "/path/to/gencode.v45.annotation.gtf"
+
+qc:
+  min_reads_per_sample: 10000000
+  max_mito_percent: 20
+
+differential_expression:
+  design: "~ batch + condition"
+  reference_level: "control"
+  padj_threshold: 0.05
+  lfc_threshold: 1.0
+
+plotting:
+  figure_width_mm: 180
+  figure_height_mm: 120
+  base_font_size: 7
+  palette:
+    control: "#4C72B0"
+    treatment: "#C44E52"

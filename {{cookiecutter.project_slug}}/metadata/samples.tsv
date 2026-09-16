@@ -1,0 +1,2 @@
+sample_id	experiment_id	condition	replicate	cell_line	timepoint	collection_date	assay	library_id	raw_path	batch	qc_status	notes
+S001	20260301_example	control	1	EXAMPLE	d30	2026-03-01	RNA-seq	LIB001	data/raw/rnaseq/S001_R1.fastq.gz	batch1	pending	示例行，开始记录前请删除

@@ -1,0 +1,41 @@
+# ---- 数据：默认全部排除，只保留说明文件 ----
+data/**
+!data/**/
+!data/**/README.md
+
+# ---- 脚本产物：可重跑，不进版本库 ----
+results/figures/**
+!results/figures/README.md
+results/tables/**
+!results/tables/README.md
+
+# ---- 环境 ----
+.pixi/
+# pixi.lock 应当提交，它保证环境可复现
+
+# ---- R ----
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+
+# ---- Quarto / LaTeX ----
+/.quarto/
+*_files/
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.synctex.gz
+
+# ---- 系统 ----
+.DS_Store
+Thumbs.db
+*~
