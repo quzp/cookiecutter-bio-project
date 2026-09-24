@@ -41,9 +41,11 @@ history.
    figure) and a figure plan before drafting prose.
 2. **Write in `drafts/`.** Save each working session as a new minor version:
    `Manuscript_v00.01-260901_wip.docx`, `…_v00.02-…`.
-3. **Milestone.** When the text goes to co-authors, or is finalized, save it as the next
-   major version (`v01.00`) in `drafts/`, **copy** that file to `main/`, and add one line
-   to `drafts/VERSION_LOG.md`.
+3. **Milestone.** When a document goes to co-authors, or is finalized, save it as the
+   next major version (`v01.00`) in `drafts/`, **copy** that file to its folder from the
+   table above (`main/` for the manuscript, `supplement/` for supplementary text, the
+   current `submission/…/` folder for cover letters and responses), and add one line to
+   `drafts/VERSION_LOG.md`.
 4. **Comments** come back into `drafts/` under the version they commented on:
    `Manuscript_v01.00-260922_cmt-JS.docx`.
 5. **Revise** in `drafts/` (`v01.01_rev`, …) and repeat from step 3.

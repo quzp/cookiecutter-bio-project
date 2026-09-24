@@ -219,7 +219,9 @@ MANUSCRIPT_LOG_ROWS = [
     "| 260923 | Manuscript_v01.00-260923_cmt-AB.docx | cmt-AB | Comments on v01.00 (example) | from AB |",
     "| 261003 | Manuscript_v02.00-261003_int.docx | int | Second round (example) | JS, AB |",
     "| 261020 | Manuscript_v03.00-261020_final.docx | final | Approved by all authors (example) | all authors |",
+    "| 261020 | Cover-Letter_v01.00-261020_final.docx | final | Cover letter approved (example) | all authors |",
     "| 261021 | Manuscript_v03.00-261021_submitted.pdf | submitted | Submitted to Nat Commun (example) | journal |",
+    "| 261021 | Cover-Letter_v01.00-261021_submitted.docx | submitted | Uploaded with the manuscript (example) | journal |",
 ]
 
 

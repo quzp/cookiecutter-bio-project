@@ -24,6 +24,7 @@ test ! -e "$OUT/test_bio/manuscript/draft"              || fail "bio: obsolete m
 test -f "$OUT/test_bio/manuscript/drafts/Manuscript_v01.00-260915_int.docx" || fail "bio: example draft missing"
 test -f "$OUT/test_bio/manuscript/main/Manuscript_v01.00-260915_int.docx"   || fail "bio: example major version not copied to main/"
 grep -q "(example)" "$OUT/test_bio/manuscript/drafts/VERSION_LOG.md"      || fail "bio: example log rows missing"
+grep -q "Cover-Letter_v01.00-261021_submitted.docx" "$OUT/test_bio/manuscript/drafts/VERSION_LOG.md" || fail "bio: cover-letter log rows missing"
 test -z "$(find "$OUT/test_bio/manuscript/drafts" -mindepth 1 -type d)"  || fail "bio: drafts/ must stay flat"
 test -z "$(git -C "$OUT/test_bio" status --porcelain)"                     || fail "bio: example files not in first commit"
 
