@@ -1,0 +1,42 @@
+{
+  "project_name": "My Grant Project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "project_id": "GRANT001",
+  "pi_name": "Your Name",
+  "institution": "Your Institution",
+  "sponsor": "NIH",
+  "mechanism": "R01",
+  "is_resubmission": [
+    "no",
+    "yes"
+  ],
+  "nofo_number": "",
+  "nofo_url": "",
+  "deadline": "YYYY-MM-DD",
+  "internal_deadline": "",
+  "target_program": "",
+  "program_officer": "",
+  "study_section": "",
+  "project_period": "",
+  "budget_ceiling": "",
+  "scientific_field": "Biomedical Research",
+  "disease_problem": "",
+  "model_system": "",
+  "central_biological_question": "",
+  "coordinator_assistant": [
+    "Claude Project",
+    "ChatGPT Project/Work"
+  ],
+  "analysis_tool": [
+    "Claude Science",
+    "Codex",
+    "Claude Code",
+    "Other"
+  ],
+  "analysis_repo": "",
+  "reference_library": "Zotero",
+  "init_git": [
+    "yes",
+    "no"
+  ]
+}

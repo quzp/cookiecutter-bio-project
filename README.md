@@ -4,6 +4,14 @@ A lightweight scaffold for biology research projects. One command creates a
 **wet-lab + dry-lab** directory structure where every folder carries its own
 README explaining what belongs in it — and nothing else.
 
+The repository also ships a second template, [`grant/`](grant/), for **NIH-compliant,
+AI-assisted grant development**. Both templates are selected from the same repository:
+
+| Template | Command | Creates |
+|---|---|---|
+| Bio project (default) | `cookiecutter gh:quzp/cookiecutter-bio-project` | Wet-lab + dry-lab research project |
+| Grant workflow | `cookiecutter gh:quzp/cookiecutter-bio-project --directory grant` | Gated grant-writing workspace with AI prompts and registers |
+
 The philosophy follows [Cookiecutter Data Science](https://github.com/drivendataorg/cookiecutter-data-science)
 and [cookiecutter-reproducible-science](https://github.com/mkrapp/cookiecutter-reproducible-science),
 with three changes aimed at bench-plus-computation projects:
@@ -24,7 +32,7 @@ with three changes aimed at bench-plus-computation projects:
 uv tool install cookiecutter        # or: pipx install cookiecutter
 
 # Generate from GitHub
-cookiecutter gh:YOUR_GITHUB_USERNAME/cookiecutter-bio-project
+cookiecutter gh:quzp/cookiecutter-bio-project
 
 # ...or from a local clone
 cookiecutter path/to/cookiecutter-bio-project
@@ -92,6 +100,34 @@ your_project/
     └── reports/                  Progress reports, committee updates, grant reporting
 ```
 
+## Grant workflow template
+
+```bash
+cookiecutter gh:quzp/cookiecutter-bio-project --directory grant
+```
+
+Creates a grant workspace organised around a seven-phase, gated workflow in which
+**the PI writes the application and AI retrieves, computes, critiques, and verifies**,
+in line with NIH NOT-OD-25-132 and the NIH Simplified Review Framework:
+
+```
+your_grant/
+├── 00_Admin/            Brief, state, decision log, timeline, AI-use log,
+│                        data classification, NIH application count
+├── 01_Funding/          Official documents, compliance matrix, landscape, PO contact
+├── 02_Evidence/         Claims register, evidence matrix, Zotero export
+├── 03_Preliminary_Data/ Figure register, figures, source data, analysis-repo pointer
+├── 04_Application/      PI-authored application text
+├── 05_Review/           AI + human review, reviewer risk register
+├── 06_Submission/       Final compliance, submitted package
+└── .ai/                 Master instructions, prompts A–G, handoff file, workflow
+```
+
+A grant's preliminary data usually come from a bio project: record that project's
+repository in `analysis_repo`, and the grant's `03_Preliminary_Data/` will point to it
+rather than duplicating data. See [`grant/README.md`](grant/README.md) and
+[`grant/docs/GRANT_WORKFLOW_GUIDE.md`](grant/docs/GRANT_WORKFLOW_GUIDE.md).
+
 ## Customising the template
 
 - **Add or remove directories:** edit the tree under `{{cookiecutter.project_slug}}/`.
@@ -101,6 +137,11 @@ your_project/
   `{{ cookiecutter.your_key }}` in any file content or file name.
 - **Post-generation logic** lives in `hooks/post_gen_project.py` (license selection,
   date substitution, git init). Input validation lives in `hooks/pre_gen_project.py`.
+
+- **Grant template** files live under `grant/` and are edited the same way
+  (`grant/cookiecutter.json`, `grant/hooks/`, `grant/{{cookiecutter.project_slug}}/`).
+- **Test both templates** before pushing: `bash tests/bake_test.sh`
+  (GitHub Actions runs the same script on every push).
 
 ## License
 
