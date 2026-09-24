@@ -1,5 +1,16 @@
 # Changelog — grant template
 
+## v2.1.0 — 2026-09-24
+
+### Changed
+- `04_Application/` reorganised as the PI's writing workspace: `notes/` for outlines and the concept page, `draft/` for every saved version of each document. Section folders moved to `04_Application/draft/`.
+- Version naming changed from `YYYY-MM-DD_document_vNN_status` to `Document-Name_vXX.YY-YYMMDD_status` (major = round, minor = working save, six-digit date); status codes simplified to `wip` / `int` / `cmt-XX` / `rev` / `frozen` / `final` / `submitted`.
+- AI review outputs are named after the draft version they read (`…_AI-<prompt>`).
+
+### Added
+- `04_Application/draft/Summary_Narrative/` for the Project Summary and Narrative.
+- `04_Application/draft/VERSION_LOG.md`.
+
 ## v2.0.0 — 2026-09-24
 
 ### Changed

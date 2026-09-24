@@ -89,7 +89,8 @@ your_project/
 │   └── tables/
 │
 ├── manuscript/               <- Everything aimed at publication
-│   ├── main/
+│   ├── notes/                    Outline, storyline, figure plan
+│   ├── draft/                    Every saved version of the text (vXX.YY-YYMMDD_status)
 │   ├── figures/                  Hand-assembled final figures (tracked in git)
 │   ├── supplement/
 │   └── submission/               Per-journal versions, cover letters, rebuttals
@@ -117,7 +118,7 @@ your_grant/
 ├── 01_Funding/          Official documents, compliance matrix, landscape, PO contact
 ├── 02_Evidence/         Claims register, evidence matrix, Zotero export
 ├── 03_Preliminary_Data/ Figure register, figures, source data, analysis-repo pointer
-├── 04_Application/      PI-authored application text
+├── 04_Application/      PI writing workspace: notes/ + versioned draft/
 ├── 05_Review/           AI + human review, reviewer risk register
 ├── 06_Submission/       Final compliance, submitted package
 └── .ai/                 Master instructions, prompts A–G, handoff file, workflow

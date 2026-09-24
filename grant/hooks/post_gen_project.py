@@ -11,7 +11,7 @@ PROJECT_SLUG = "{{ cookiecutter.project_slug }}"
 
 
 def prune_resubmission():
-    intro = PROJECT_DIR / "04_Application" / "Introduction_Resubmission"
+    intro = PROJECT_DIR / "04_Application" / "draft" / "Introduction_Resubmission"
     if not RESUB and intro.exists():
         shutil.rmtree(intro)
 
@@ -44,6 +44,7 @@ def goodbye():
     print("    2. Put the official NOFO + instructions in 01_Funding/NOFO_and_Instructions/")
     print("    3. Paste .ai/MASTER_INSTRUCTIONS.md into ONE coordinator assistant")
     print("    4. Run .ai/prompts/A_compliance.md with .ai/handoffs/GRANT_HANDOFF.md")
+    print("    5. Write in 04_Application/draft/ (version naming: 04_Application/README.md)")
     print("")
     print("  Rule: RED-zone text (Aims, Research Strategy, Summary, Narrative,")
     print("  resubmission Introduction, PO emails) is written by the PI.")

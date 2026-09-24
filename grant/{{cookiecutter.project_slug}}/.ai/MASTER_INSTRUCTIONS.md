@@ -43,7 +43,10 @@ unresolved assumption.
 
 ## Output location
 Write outputs as new files for 05_Review/AI_Review/ or as returned text.
-Never overwrite files in 04_Application/.
+Never overwrite files in 04_Application/. Name each output after the draft
+version it reviewed, with AI-<prompt letter> as status, e.g.
+Specific-Aims_v01.00-YYMMDD_AI-D.md. If the file name of a supplied draft
+carries no version, ask the PI which version it is.
 
 ## Data handling
 Follow 00_Admin/DATA_CLASSIFICATION.md. If a request would involve data in a

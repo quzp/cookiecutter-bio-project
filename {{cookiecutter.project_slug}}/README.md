@@ -41,7 +41,8 @@ pixi shell            # enter the environment interactively
 │   ├── figures/        Regenerable figures, excluded from git
 │   └── tables/         Statistical result tables
 ├── manuscript/     Everything aimed at publication
-│   ├── main/           Manuscript text
+│   ├── notes/          Outline, storyline, figure plan
+│   ├── draft/          Every saved version of the text, plus VERSION_LOG.md
 │   ├── figures/        Hand-assembled final figures, tracked in git
 │   ├── supplement/     Supplementary material
 │   └── submission/     Per-journal versions and rebuttals
@@ -66,7 +67,10 @@ Every directory contains a `README.md` describing exactly what belongs in it.
    panels go to `manuscript/figures/`. The two are never mixed.
 5. **`CHANGELOG.md` records turning points:** new data batches, changed analysis methods,
    submissions and revisions — one line each.
-6. **Large files stay out of git.** See `.gitignore`. For mid-size files that genuinely
+6. **Drafts are never overwritten.** Documents that go through rounds (manuscript,
+   cover letter, rebuttal, reports) are saved as `Document-Name_vXX.YY-YYMMDD_status.docx`;
+   see `manuscript/README.md` for the version and status rules.
+7. **Large files stay out of git.** See `.gitignore`. For mid-size files that genuinely
    need versioning, `.gitattributes` has commented Git LFS rules.
 
 ## Data backup

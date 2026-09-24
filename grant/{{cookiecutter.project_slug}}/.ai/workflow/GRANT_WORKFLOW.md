@@ -46,9 +46,9 @@ The example is an R01 planned backward from the deadline **T**. Compress proport
 | **P0 Setup & rules** | T−16 to T−14 wk | Compliance matrix, application count, data classification, timeline | AI (Prompt A) + PI verification | G0 |
 | **P1 Positioning & PO** | T−15 to T−12 wk | LANDSCAPE.md, one-page concept, PO contact | PI writes concept; AI summarizes landscape (Prompt B) | G1 |
 | **P2 Evidence** | T−14 to T−10 wk | Evidence matrix, claims register, knowledge-gap sentence | AI retrieves and verifies (Prompt C); PI writes gap sentence | G2 |
-| **P3 Aims & stress test** | T−12 to T−9 wk | Specific Aims v1 (PI) → stress-test report → v2 | PI writes; AI critiques (Prompt D) | G3 |
+| **P3 Aims & stress test** | T−12 to T−9 wk | Specific Aims `v01.00` (PI) → stress-test report → `v02.00_frozen` | PI writes; AI critiques (Prompt D) | G3 |
 | **P4 Preliminary data** | T−12 to T−6 wk (parallel with P2–P3) | Figures, source data, code, FIGURE_REGISTER | AI analyzes (Prompt E); PI writes conclusions | G4 |
-| **P5 Research Strategy** | T−9 to T−4 wk | Research Strategy v1–v3 | PI writes; AI audits and suggests edits (Prompt F) | G5 |
+| **P5 Research Strategy** | T−9 to T−4 wk | Research Strategy `v01.00` → `v03.00` | PI writes; AI audits and suggests edits (Prompt F) | G5 |
 | **P6 Review** | T−5 to T−3 wk | AI review, human review, risk register | AI (Prompt G) + 2–3 colleagues | G6 |
 | **P7 Compliance & submission** | T−3 wk to internal deadline | FINAL_COMPLIANCE, AI-use record, submission | AI (Prompt A final mode) + PI | G7 |
 
@@ -69,7 +69,7 @@ The example is an R01 planned backward from the deadline **T**. Compress proport
 **Steps**
 1. The PI writes a 250–300-word project summary (🔴) and runs it through [RePORTER Matchmaker](https://reporter.nih.gov/matchmaker); export similar projects, ICs, and study sections.
 2. Run **Prompt B** to summarize the exports into `LANDSCAPE.md`: closest funded projects, overlap risks, differentiators, candidate ICs and study sections, questions for the PO.
-3. The PI writes a one-page concept (problem, gap, hypothesis, 2–3 aim titles) and the email to the PO (🔴); log it in `PO_CONTACT.md`.
+3. The PI writes a one-page concept (problem, gap, hypothesis, 2–3 aim titles) and the email to the PO (🔴) in `04_Application/notes/`; log it in `PO_CONTACT.md`.
 4. Record PO feedback (fit with IC priorities, suggested study section, mechanism) in `DECISION_LOG.md`.
 
 **G1 passes when:** you can state in one paragraph why this IC and this mechanism; the PO has been contacted (or the reason not to is recorded); overlap risks are known.
@@ -89,12 +89,12 @@ The example is an R01 planned backward from the deadline **T**. Compress proport
 ### P3 — Aims architecture & stress test
 
 **Steps**
-1. The PI writes Specific Aims v1 (🔴). It can be rough, but the logic must be the PI's. A useful skeleton: problem → gap → central hypothesis → Aims 1/2/3 (one sentence for the question, one for the approach) → expected outcomes.
+1. The PI writes Specific Aims (🔴) in `04_Application/draft/Specific_Aims/`, saving working versions as `v00.xx_wip` and the first shareable page as `v01.00`. It can be rough, but the logic must be the PI's. A useful skeleton: problem → gap → central hypothesis → Aims 1/2/3 (one sentence for the question, one for the approach) → expected outcomes.
 2. In a **new conversation**, run **Prompt D**: dependency matrix, falsifiability, controls and confounders, sample size, feasibility, and whether a negative result would still be informative. AI returns an issue list only and does not rewrite the Aims.
-3. The PI accepts or rejects each issue, records decisions in `DECISION_LOG.md`, and revises to v2.
-4. Optional: use Prompt F line-edit mode for sentence-level suggestions on v2.
+3. The PI accepts or rejects each issue, records decisions in `DECISION_LOG.md`, and revises (`v01.01_rev`, …) until the architecture can be frozen.
+4. Optional: use Prompt F line-edit mode for sentence-level suggestions on the revised Aims.
 
-**G3 passes when:** all CRITICAL issues are resolved; each Aim answers "why does it exist / what result supports or challenges the hypothesis / can other Aims proceed if it fails"; `Specific_Aims_v2_architecture-frozen` is saved.
+**G3 passes when:** all CRITICAL issues are resolved; each Aim answers "why does it exist / what result supports or challenges the hypothesis / can other Aims proceed if it fails"; the frozen version is saved as `04_Application/draft/Specific_Aims/Specific-Aims_vXX.00-YYMMDD_frozen.docx`.
 
 ### P4 — Preliminary data (parallel with P2–P3)
 
@@ -109,7 +109,7 @@ The example is an R01 planned backward from the deadline **T**. Compress proport
 ### P5 — Research Strategy
 
 **Steps**
-1. The PI writes Significance, Innovation, and Approach from Aims v2 (🔴). Each Aim's Approach covers at least: rationale; design (groups, controls, biological replicates, primary endpoint); analysis and statistics; expected outcomes and interpretation; pitfalls and alternatives; milestones.
+1. The PI writes Significance, Innovation, and Approach from the frozen Aims (🔴), in `04_Application/draft/Research_Strategy/`. Each Aim's Approach covers at least: rationale; design (groups, controls, biological replicates, primary endpoint); analysis and statistics; expected outcomes and interpretation; pitfalls and alternatives; milestones.
 2. After each major section, run **Prompt F (audit mode)**: Aims ↔ Strategy consistency; claims ↔ claims register; numbers ↔ figure register; methods ↔ endpoints; risks ↔ alternatives; Factor 2 rigor elements (biological variables, authentication of key resources, statistical plan).
 3. When useful, run **Prompt F (line-edit mode)**: AI returns an "original / suggestion / reason" table rather than a rewrite. The PI accepts items one by one and logs the session in AI_USE_LOG.
 4. Resubmissions: the PI writes the Introduction (🔴), responding to each point in the summary statement. AI may do one thing here: tabulate every critique and check that the Introduction and the body address each one.
