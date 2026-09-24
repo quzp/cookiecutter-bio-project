@@ -50,6 +50,7 @@ You will be prompted for:
 | `primary_language` | `R` / `Python` / `R + Python`; determines `pixi.toml` dependencies |
 | `use_quarto` | Adds Quarto to the environment and ships notebook templates |
 | `open_source_license` | `MIT` / `BSD-3-Clause` / `CC-BY-4.0` / `None` |
+| `include_example_drafts` | `yes` fills `manuscript/drafts/` with example files showing the version naming, plus their copies in `main/` and `submission/`; delete them when you start writing |
 | `init_git_repo` | Runs `git init` and creates the first commit |
 
 ## Generated structure

@@ -2,6 +2,9 @@
 
 ## v2.2.0 — 2026-09-24
 
+### Added
+- `include_example_drafts` option: fills `04_Application/drafts/` with self-describing example `.docx`/`.pdf` files and their major-version copies, example `VERSION_LOG.md` rows, and an example AI review.
+
 ### Changed
 - `04_Application/draft/` renamed to `drafts/` and flattened: every version of every document lives in one folder, told apart by file name. `drafts/` holds only the version rules (`README.md`) and `VERSION_LOG.md` besides the drafts.
 - Section folders (`Specific_Aims/`, `Research_Strategy/`, `Summary_Narrative/`, `Introduction_Resubmission/`, `Other_Attachments/`) moved back up to `04_Application/`; they now hold copies of each major version.

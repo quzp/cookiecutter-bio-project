@@ -35,6 +35,10 @@
   ],
   "analysis_repo": "",
   "reference_library": "Zotero",
+  "include_example_drafts": [
+    "yes",
+    "no"
+  ],
   "init_git": [
     "yes",
     "no"

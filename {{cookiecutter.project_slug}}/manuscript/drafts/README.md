@@ -46,6 +46,13 @@ the current `submission/NN_Journal-Name_YYMMDD/`.
 
 ## Example
 
+If the project was generated with `include_example_drafts=yes`, the files below really
+exist: each `.docx`/`.pdf` is a one-page placeholder that explains its own file name, and
+the copies marked `→` are in `main/` and `submission/01_Nat-Commun_261021/`.
+`VERSION_LOG.md` has matching example rows. **Delete all of them (and the example log
+rows and the example submission folder) before you start writing** — every example
+begins with the words "EXAMPLE FILE".
+
 ```
 drafts/
 ├── README.md

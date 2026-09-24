@@ -31,6 +31,7 @@ cookiecutter gh:quzp/cookiecutter-bio-project --directory grant --checkout v2.0.
 | `target_program`, `program_officer`, `study_section` | Positioning |
 | `coordinator_assistant` | The ONE assistant used as coordinator |
 | `analysis_tool`, `analysis_repo` | Where preliminary-data analysis happens (e.g., a project made with the bio template) |
+| `include_example_drafts` | `yes` fills `04_Application/drafts/` with example files showing the version naming, plus their copies in the section folders, `05_Review/AI_Review/` and `06_Submission/Submitted/`; delete them when you start writing |
 | `init_git` | Initialize a Git repository with a first commit |
 
 ## Generated structure

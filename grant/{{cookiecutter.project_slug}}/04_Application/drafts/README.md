@@ -48,6 +48,13 @@ section folder shows only the milestones.
 
 ## Example
 
+If the project was generated with `include_example_drafts=yes`, the files below really
+exist: each `.docx`/`.pdf` is a one-page placeholder that explains its own file name, and
+the copies marked `→` are in the section folders. `VERSION_LOG.md` has matching example
+rows, and `05_Review/AI_Review/` holds the example AI review. **Delete all of them (and
+the example log rows) before you start writing** — every example begins with the words
+"EXAMPLE FILE".
+
 ```text
 drafts/
 ├── README.md
