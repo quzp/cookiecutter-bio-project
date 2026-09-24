@@ -8,7 +8,7 @@ The field knows ________, but does not yet know ________, and this uncertainty p
 
 ## Central hypothesis (PI)
 
-## Aims (titles only; full text lives in 04_Application/draft/Specific_Aims/)
+## Aims (titles only; full text lives in 04_Application/Specific_Aims/)
 - Aim 1:
 - Aim 2:
 - Aim 3:

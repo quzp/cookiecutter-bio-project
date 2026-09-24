@@ -63,7 +63,7 @@ YELLOW-zone output must still be verified and revised by the PI. Whether a use c
 
 | Content | Canonical location | Who may edit |
 |---|---|---|
-| Application text (Aims, Research Strategy, etc.) | Versioned files in `04_Application/draft/`, named `Document-Name_vXX.YY-YYMMDD_status` (rules in `04_Application/README.md`) | PI (or PI-authorized co-authors) only |
+| Application text (Aims, Research Strategy, etc.) | Every version in `04_Application/drafts/` (flat), named `Document-Name_vXX.YY-YYMMDD_status` (rules in `04_Application/drafts/README.md`); major versions copied to the section folders | PI (or PI-authorized co-authors) only |
 | Current project state | `00_Admin/PROJECT_STATE.md` | PI; AI may propose changes |
 | Decisions | `00_Admin/DECISION_LOG.md` | PI |
 | Literature | The project's Zotero collection (`02_Evidence/references.bib` is an export) | PI |
@@ -101,15 +101,16 @@ Grant_Project/
 │   ├── source_data/
 │   └── ANALYSIS_REPO.md          # pointer to the analysis repo (no raw data here)
 ├── 04_Application/               # 🔴 RED zone — the PI's writing workspace
-│   ├── README.md                 # writing workflow, version naming, status codes
+│   ├── README.md                 # writing workflow
 │   ├── notes/                    # concept page, outlines, cut paragraphs
-│   └── draft/                    # every saved version, never overwritten
-│       ├── VERSION_LOG.md
-│       ├── Specific_Aims/
-│       ├── Research_Strategy/
-│       ├── Summary_Narrative/
-│       ├── Introduction_Resubmission/  # generated only for resubmissions
-│       └── Other_Attachments/
+│   ├── drafts/                   # every version of every document, flat, never overwritten
+│   │   ├── README.md             # version naming rules and status codes
+│   │   └── VERSION_LOG.md
+│   ├── Specific_Aims/            # section folders: copies of major versions only
+│   ├── Research_Strategy/
+│   ├── Summary_Narrative/
+│   ├── Introduction_Resubmission/  # generated only for resubmissions
+│   └── Other_Attachments/
 ├── 05_Review/
 │   ├── AI_Review/
 │   ├── Human_Review/
@@ -194,12 +195,12 @@ The example is an R01 planned backward from the deadline **T**. Compress proport
 ### P3 — Aims architecture & stress test
 
 **Steps**
-1. The PI writes Specific Aims (🔴) in `04_Application/draft/Specific_Aims/`, saving working versions as `v00.xx_wip` and the first shareable page as `v01.00`. It can be rough, but the logic must be the PI's. A useful skeleton: problem → gap → central hypothesis → Aims 1/2/3 (one sentence for the question, one for the approach) → expected outcomes.
+1. The PI writes Specific Aims (🔴) in `04_Application/drafts/`, saving working versions as `v00.xx_wip` and the first shareable page as `v01.00` (copied to `04_Application/Specific_Aims/`). It can be rough, but the logic must be the PI's. A useful skeleton: problem → gap → central hypothesis → Aims 1/2/3 (one sentence for the question, one for the approach) → expected outcomes.
 2. In a **new conversation**, run **Prompt D**: dependency matrix, falsifiability, controls and confounders, sample size, feasibility, and whether a negative result would still be informative. AI returns an issue list only and does not rewrite the Aims.
 3. The PI accepts or rejects each issue, records decisions in `DECISION_LOG.md`, and revises (`v01.01_rev`, …) until the architecture can be frozen.
 4. Optional: use Prompt F line-edit mode for sentence-level suggestions on the revised Aims.
 
-**G3 passes when:** all CRITICAL issues are resolved; each Aim answers "why does it exist / what result supports or challenges the hypothesis / can other Aims proceed if it fails"; the frozen version is saved as `04_Application/draft/Specific_Aims/Specific-Aims_vXX.00-YYMMDD_frozen.docx`.
+**G3 passes when:** all CRITICAL issues are resolved; each Aim answers "why does it exist / what result supports or challenges the hypothesis / can other Aims proceed if it fails"; the frozen version `Specific-Aims_vXX.00-YYMMDD_frozen.docx` is saved in `04_Application/drafts/` and copied to `04_Application/Specific_Aims/`.
 
 ### P4 — Preliminary data (parallel with P2–P3)
 
@@ -214,7 +215,7 @@ The example is an R01 planned backward from the deadline **T**. Compress proport
 ### P5 — Research Strategy
 
 **Steps**
-1. The PI writes Significance, Innovation, and Approach from the frozen Aims (🔴), in `04_Application/draft/Research_Strategy/`. Each Aim's Approach covers at least: rationale; design (groups, controls, biological replicates, primary endpoint); analysis and statistics; expected outcomes and interpretation; pitfalls and alternatives; milestones.
+1. The PI writes Significance, Innovation, and Approach from the frozen Aims (🔴), in `04_Application/drafts/` (major versions copied to `04_Application/Research_Strategy/`). Each Aim's Approach covers at least: rationale; design (groups, controls, biological replicates, primary endpoint); analysis and statistics; expected outcomes and interpretation; pitfalls and alternatives; milestones.
 2. After each major section, run **Prompt F (audit mode)**: Aims ↔ Strategy consistency; claims ↔ claims register; numbers ↔ figure register; methods ↔ endpoints; risks ↔ alternatives; Factor 2 rigor elements (biological variables, authentication of key resources, statistical plan).
 3. When useful, run **Prompt F (line-edit mode)**: AI returns an "original / suggestion / reason" table rather than a rewrite. The PI accepts items one by one and logs the session in AI_USE_LOG.
 4. Resubmissions: the PI writes the Introduction (🔴), responding to each point in the summary statement. AI may do one thing here: tabulate every critique and check that the Introduction and the body address each one.

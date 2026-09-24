@@ -1,81 +1,57 @@
 # manuscript/
 
-Everything aimed at publication, laid out in the order you write it:
-notes → drafts → figures and supplement → submission.
+Everything aimed at publication.
 
-| Subdirectory | Contents |
-| --- | --- |
-| `notes/` | Outline, storyline, figure plan, key messages, paragraphs cut from drafts |
-| `draft/` | **Every saved version of the manuscript text**, plus `VERSION_LOG.md` |
-| `figures/` | Hand-assembled final figures, tracked in git |
-| `supplement/` | Supplementary figures, tables and methods |
-| `submission/` | One folder per journal attempt: what was sent, what came back, the rebuttal |
+```
+manuscript/
+├── notes/        outline, storyline, figure plan, paragraphs cut from drafts
+├── drafts/       EVERY version of EVERY text document, one flat folder
+│   ├── README.md     version naming rules and status codes
+│   └── VERSION_LOG.md
+├── main/         major versions of the main text (copies of vXX.00 from drafts/)
+├── supplement/   supplementary figures and tables + major versions of supplementary text
+├── figures/      hand-assembled final figures, tracked in git
+└── submission/   one folder per journal attempt, NN_Journal-Name_YYMMDD/
+```
 
 When writing the Methods section, take reagent vendors and catalogue numbers from
 `wetlab/protocols/`, cell line and antibody lots from `wetlab/inventory/`, and software
 versions from `pixi.lock` — not from memory.
 
-## Writing workflow
+## Three places, three jobs
+
+| Folder | What goes in | How often |
+| --- | --- | --- |
+| `notes/` | Material you write for yourself: main finding, storyline, figure plan, outline | Freely |
+| `drafts/` | Every saved version (major and minor) of every text document — manuscript, supplementary methods, cover letter, response to reviewers — plus returned comments. **No subfolders**; documents are told apart by file name | Every working session |
+| `main/`, `supplement/`, `submission/…/` | A **copy** of each major version (`vXX.00`) from `drafts/`: what was shared, finalized or submitted | At each milestone |
+
+The upper-level folders are the clean view of the milestones; `drafts/` is the complete
+history.
+
+| Document in `drafts/` | Major versions are copied to |
+| --- | --- |
+| `Manuscript_…` | `main/` |
+| `Supplementary-Methods_…`, `Supplementary-Text_…` | `supplement/` |
+| `Cover-Letter_…`, `Response-to-Reviewers_…` | the current `submission/NN_Journal-Name_YYMMDD/` |
+
+## Writing loop
 
 1. **Plan in `notes/`.** Write the one-sentence main finding, the storyline (one line per
-   figure), and a figure plan before drafting prose.
-2. **Draft in `draft/`.** Never overwrite a version you might want back: save each
-   working session as a new minor version (`v00.01`, `v00.02`, …).
-3. **Share a round.** When a draft leaves your hands (co-authors, PI, mentor), bump the
-   major version (`v01.00`) with status `int`, and add one line to `draft/VERSION_LOG.md`.
-4. **Collect comments.** Save each returned copy next to the version it comments on,
-   keeping that version number and adding the reviewer's initials: `…_cmt-JS`.
-5. **Revise.** Merge comments into the next minor versions (`v01.01_rev`, …). Repeat
-   steps 3–5 until the text is final.
+   figure) and a figure plan before drafting prose.
+2. **Write in `drafts/`.** Save each working session as a new minor version:
+   `Manuscript_v00.01-260901_wip.docx`, `…_v00.02-…`.
+3. **Milestone.** When the text goes to co-authors, or is finalized, save it as the next
+   major version (`v01.00`) in `drafts/`, **copy** that file to `main/`, and add one line
+   to `drafts/VERSION_LOG.md`.
+4. **Comments** come back into `drafts/` under the version they commented on:
+   `Manuscript_v01.00-260922_cmt-JS.docx`.
+5. **Revise** in `drafts/` (`v01.01_rev`, …) and repeat from step 3.
 6. **Submit.** Copy the exact files sent to the journal into
-   `submission/NN_journal_YYMMDD/`, and record the submission in the root `CHANGELOG.md`.
+   `submission/NN_Journal-Name_YYMMDD/`, and record the submission in the root
+   `CHANGELOG.md`.
 
-## File naming
-
-```
-Document-Name_vXX.YY-YYMMDD_status.ext
-```
-
-| Part | Rule | Example |
-| --- | --- | --- |
-| `Document-Name` | Words joined by **hyphens**; underscores are reserved as field separators | `Manuscript`, `Cover-Letter`, `Response-to-Reviewers` |
-| `vXX` | Major version = review round. Bump when the file leaves your hands, is frozen or is submitted; reset minor to `00` | `v01.00` |
-| `.YY` | Minor version = working save within a round. Bump for every version worth keeping | `v01.03` |
-| `YYMMDD` | Six-digit date the file was saved (or received, for `cmt-`) | `261015` |
-| `status` | One word from the table below | `wip` |
-
-Both version fields are two digits, zero-padded, so files sort in the order they were
-written. `v00.YY` means the document has not yet been shown to anyone.
-
-| Status | Meaning |
-| --- | --- |
-| `wip` | Work in progress; only you have seen it |
-| `int` | Sent for internal review (co-authors, PI, mentors) |
-| `cmt-XX` | Returned with comments by the person with initials `XX` |
-| `rev` | Revising in response to comments |
-| `final` | Final candidate; all co-authors have approved |
-| `submitted` | Exactly the file that was submitted |
-
-A manuscript's life then reads, in file order:
-
-```
-Manuscript_v00.01-260901_wip.docx        first rough draft
-Manuscript_v00.04-260912_wip.docx
-Manuscript_v01.00-260915_int.docx        sent to co-authors
-Manuscript_v01.00-260922_cmt-JS.docx     JS's comments on v01.00
-Manuscript_v01.00-260923_cmt-AB.docx     AB's comments on v01.00
-Manuscript_v01.01-260925_rev.docx        merging comments
-Manuscript_v02.00-261003_int.docx        second round
-Manuscript_v03.00-261020_final.docx      approved by all authors
-Manuscript_v03.00-261021_submitted.pdf   what the journal received
-```
-
-Apply the same pattern to any other document that goes through rounds — cover letters,
-responses to reviewers, supplementary methods, reports. Dated one-off records whose
-purpose is chronological order (experiment folders, meeting notes) keep their
-date-first names.
-
-**Git and version files work together.** Git backs up everything, but Word files are not
-diffable and git history is invisible to co-authors; the file names are the history you
-and your collaborators actually read. If you write in Quarto or Markdown instead, see
-`draft/README.md`.
+Naming rules and status codes: [`drafts/README.md`](drafts/README.md). Apply the same
+pattern to any other document that goes through rounds, such as reports in
+`management/reports/`. Dated one-off records whose purpose is chronological order
+(experiment folders, meeting notes) keep their date-first names.

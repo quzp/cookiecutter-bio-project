@@ -5,3 +5,7 @@ Supplementary material: figures, tables, extended methods, video captions.
 Use the same numbering scheme as the main text: `figure_s1.pdf`, `table_s1.xlsx`.
 If a supplementary table originates from `results/tables/`, add a `SOURCE.md` noting the
 source file and the script that produced it.
+
+Supplementary **text** (extended methods, supplementary notes) is written in `../drafts/`
+like the main text, e.g. `Supplementary-Methods_v01.02-261001_rev.docx`; only its major
+versions (`vXX.00`) and the submitted file are copied here.

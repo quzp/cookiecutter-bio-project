@@ -26,7 +26,7 @@ cookiecutter gh:quzp/cookiecutter-bio-project --directory grant --checkout v2.0.
 | `project_name`, `project_id` | Title and short ID; `project_slug` is derived automatically |
 | `pi_name`, `institution` | Filled into the brief and templates |
 | `sponsor`, `mechanism`, `nofo_number`, `nofo_url` | Funding opportunity |
-| `is_resubmission` | `yes` creates `04_Application/draft/Introduction_Resubmission/`; `no` removes it |
+| `is_resubmission` | `yes` creates `04_Application/Introduction_Resubmission/`; `no` removes it |
 | `deadline`, `internal_deadline` | Sponsor deadline (YYYY-MM-DD) and institutional routing deadline |
 | `target_program`, `program_officer`, `study_section` | Positioning |
 | `coordinator_assistant` | The ONE assistant used as coordinator |
@@ -42,8 +42,9 @@ cookiecutter gh:quzp/cookiecutter-bio-project --directory grant --checkout v2.0.
 ├── 01_Funding/      official documents, compliance matrix, landscape, PO contact
 ├── 02_Evidence/     claims register, evidence matrix, references.bib (Zotero export)
 ├── 03_Preliminary_Data/  figure register, figures, source data, analysis-repo pointer
-├── 04_Application/  RED ZONE — PI writing workspace: notes/ + draft/ (every version kept,
-│                    Document-Name_vXX.YY-YYMMDD_status.docx)
+├── 04_Application/  RED ZONE — PI writing workspace: notes/, drafts/ (every version, flat,
+│                    Document-Name_vXX.YY-YYMMDD_status.docx), and one folder per
+│                    section holding copies of the major versions
 ├── 05_Review/       AI review, human review, reviewer risk register
 ├── 06_Submission/   final compliance, submitted package
 ├── 99_Archive/
