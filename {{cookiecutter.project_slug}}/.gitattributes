@@ -10,6 +10,8 @@
 *.pdf    binary
 *.tif    binary
 *.xlsx   binary
+*.docx   binary
+*.pptx   binary
 
 # ---- Git LFS (uncomment and run `git lfs install` if needed) ----
 # For mid-size files that genuinely need versioning, e.g. final manuscript figures

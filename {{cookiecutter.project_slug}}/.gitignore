@@ -38,6 +38,10 @@ __pycache__/
 *.blg
 *.synctex.gz
 
+# ---- Office lock files (created while a document is open) ----
+~$*
+.~lock.*#
+
 # ---- OS ----
 .DS_Store
 Thumbs.db
