@@ -50,6 +50,7 @@ You will be prompted for:
 | `primary_language` | `R` / `Python` / `R + Python`; determines `pixi.toml` dependencies |
 | `use_quarto` | Adds Quarto to the environment and ships notebook templates |
 | `open_source_license` | `MIT` / `BSD-3-Clause` / `CC-BY-4.0` / `None` |
+| `include_example_drafts` | `yes` fills `manuscript/drafts/` with example files showing the version naming, plus their copies in `main/` and `submission/`; delete them when you start writing |
 | `init_git_repo` | Runs `git init` and creates the first commit |
 
 ## Generated structure
@@ -90,7 +91,8 @@ your_project/
 │
 ├── manuscript/               <- Everything aimed at publication
 │   ├── notes/                    Outline, storyline, figure plan
-│   ├── draft/                    Every saved version of the text (vXX.YY-YYMMDD_status)
+│   ├── drafts/                   Every version of every text, flat (vXX.YY-YYMMDD_status)
+│   ├── main/                     Major versions of the main text, copied from drafts/
 │   ├── figures/                  Hand-assembled final figures (tracked in git)
 │   ├── supplement/
 │   └── submission/               Per-journal versions, cover letters, rebuttals
@@ -118,7 +120,7 @@ your_grant/
 ├── 01_Funding/          Official documents, compliance matrix, landscape, PO contact
 ├── 02_Evidence/         Claims register, evidence matrix, Zotero export
 ├── 03_Preliminary_Data/ Figure register, figures, source data, analysis-repo pointer
-├── 04_Application/      PI writing workspace: notes/ + versioned draft/
+├── 04_Application/      PI writing workspace: notes/, flat drafts/, section folders
 ├── 05_Review/           AI + human review, reviewer risk register
 ├── 06_Submission/       Final compliance, submitted package
 └── .ai/                 Master instructions, prompts A–G, handoff file, workflow

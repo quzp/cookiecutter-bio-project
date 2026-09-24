@@ -10,5 +10,6 @@
   "primary_language": ["R", "Python", "R + Python"],
   "use_quarto": ["yes", "no"],
   "open_source_license": ["MIT", "BSD-3-Clause", "CC-BY-4.0", "None"],
+  "include_example_drafts": ["yes", "no"],
   "init_git_repo": ["yes", "no"]
 }
